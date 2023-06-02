@@ -1,0 +1,27 @@
+services:
+  front:
+    image: node:lts-slim
+    ports:
+      - "3000:3000"
+      - "24678:24678"
+    volumes:
+      - .:/app
+      - nuxt-node_modules:/app/nuxt/node_modules
+    working_dir: /app/nuxt
+    command: yarn run dev
+
+  meilisearch:
+    image: getmeili/meilisearch:prototype-japanese-2
+    ports:
+      - 7700:7700
+
+  python:
+    image: python:slim
+    working_dir: /app/python
+    volumes:
+      - .:/app
+    tty: true
+
+volumes:
+  nuxt-node_modules:
+
