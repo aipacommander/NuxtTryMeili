@@ -15,7 +15,8 @@
 
 <script lang="ts" setup>
 import { reactive } from 'vue'
-import { State } from '~/composables/state';
+import { State } from '~/composables/state'
+import { ElMessage } from 'element-plus'
 import StateKey from '~/composables/stateKey'
 
 const { update } = inject(StateKey) as State
@@ -26,5 +27,6 @@ const form = reactive({
 
 const onSubmit = () => {
     update(form.url, form.apiKey)
+    ElMessage('Save Meilisearch connect state.')
 }
 </script>
